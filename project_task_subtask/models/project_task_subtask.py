@@ -30,6 +30,7 @@ class ProjectTaskSubtask(models.Model):
         default="todo",
     )
     name = fields.Char(required=True, string="Description")
+    note = fields.Char()
     reviewer_id = fields.Many2one(
         "res.users", "Created by", readonly=True, default=lambda self: self.env.user
     )
@@ -56,7 +57,10 @@ class ProjectTaskSubtask(models.Model):
     @api.multi
     def _compute_hide_button(self):
         for record in self:
-            if self.env.user not in [record.reviewer_id, record.user_id]:
+            if (
+                self.env.user not in [record.reviewer_id, record.user_id]
+                and not self.env.user._is_admin()
+            ):
                 record.hide_button = True
 
     @api.multi
@@ -79,9 +83,13 @@ class ProjectTaskSubtask(models.Model):
                 r.task_id.send_subtask_email(
                     r.name, r.state, r.reviewer_id.id, r.user_id.id
                 )
-                if self.env.user != r.reviewer_id and self.env.user != r.user_id:
+                if not (
+                    self.env.user == r.reviewer_id
+                    or self.env.user == r.user_id
+                    or self.env.user._is_admin()
+                ):
                     raise UserError(
-                        _("Only users related to that subtask can change state.")
+                        _("Only users related to that subtask can change the state.")
                     )
             if vals.get("name"):
                 r.task_id.send_subtask_email(
@@ -91,9 +99,13 @@ class ProjectTaskSubtask(models.Model):
                     r.user_id.id,
                     old_name=old_names[r.id],
                 )
-                if self.env.user != r.reviewer_id and self.env.user != r.user_id:
+                if not (
+                    self.env.user == r.reviewer_id
+                    or self.env.user == r.user_id
+                    or self.env.user._is_admin()
+                ):
                     raise UserError(
-                        _("Only users related to that subtask can change state.")
+                        _("Only users related to that subtask can change the name.")
                     )
             if vals.get("user_id"):
                 r.task_id.send_subtask_email(
@@ -130,6 +142,10 @@ class ProjectTaskSubtask(models.Model):
     def change_state_waiting(self):
         for record in self:
             record.state = "waiting"
+
+    @api.multi
+    def action_delete(self):
+        self.unlink()
 
 
 class Task(models.Model):
