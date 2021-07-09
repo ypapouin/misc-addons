@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 10:00+0000\n"
-"PO-Revision-Date: 2021-03-12 10:00+0000\n"
+"POT-Creation-Date: 2021-07-09 09:39+0000\n"
+"PO-Revision-Date: 2021-07-09 09:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_task_subtask
-#: code:addons/project_task_subtask/models/project_task_subtask.py:174
+#: code:addons/project_task_subtask/models/project_task_subtask.py:190
 #, python-format
 msgid "<li><b>To-Do{}</b></li>"
 msgstr ""
 
 #. module: project_task_subtask
-#: code:addons/project_task_subtask/models/project_task_subtask.py:177
+#: code:addons/project_task_subtask/models/project_task_subtask.py:195
 #, python-format
 msgid "<li><b>Waiting{}</b></li>"
 msgstr ""
@@ -114,6 +114,11 @@ msgid "Default User"
 msgstr ""
 
 #. module: project_task_subtask
+#: model_terms:ir.ui.view,arch_db:project_task_subtask.view_task_form2
+msgid "Delete"
+msgstr ""
+
+#. module: project_task_subtask
 #: model:ir.model.fields,field_description:project_task_subtask.field_project_task_subtask__name
 #: model_terms:ir.ui.view,arch_db:project_task_subtask.project_task_subtask_view_search
 msgid "Description"
@@ -147,13 +152,13 @@ msgid "Hide Button"
 msgstr ""
 
 #. module: project_task_subtask
-#: code:addons/project_task_subtask/models/project_task_subtask.py:279
+#: code:addons/project_task_subtask/models/project_task_subtask.py:297
 #, python-format
 msgid "I updated checklist item assigned to me"
 msgstr ""
 
 #. module: project_task_subtask
-#: code:addons/project_task_subtask/models/project_task_subtask.py:290
+#: code:addons/project_task_subtask/models/project_task_subtask.py:310
 #, python-format
 msgid "I updated checklist item, now its assigned to"
 msgstr ""
@@ -189,6 +194,11 @@ msgid "My"
 msgstr ""
 
 #. module: project_task_subtask
+#: model:ir.ui.menu,name:project_task_subtask.menu_project_mytasks
+msgid "My Tasks"
+msgstr ""
+
+#. module: project_task_subtask
 #: model:ir.model.fields,field_description:project_task_subtask.field_project_task_subtask__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr ""
@@ -204,10 +214,20 @@ msgid "Next Activity Type"
 msgstr ""
 
 #. module: project_task_subtask
-#: code:addons/project_task_subtask/models/project_task_subtask.py:84
-#: code:addons/project_task_subtask/models/project_task_subtask.py:96
+#: model:ir.model.fields,field_description:project_task_subtask.field_project_task_subtask__note
+msgid "Note"
+msgstr ""
+
+#. module: project_task_subtask
+#: code:addons/project_task_subtask/models/project_task_subtask.py:108
 #, python-format
-msgid "Only users related to that subtask can change state."
+msgid "Only users related to that subtask can change the name."
+msgstr ""
+
+#. module: project_task_subtask
+#: code:addons/project_task_subtask/models/project_task_subtask.py:92
+#, python-format
+msgid "Only users related to that subtask can change the state."
 msgstr ""
 
 #. module: project_task_subtask
@@ -309,7 +329,7 @@ msgid "Unsort"
 msgstr ""
 
 #. module: project_task_subtask
-#: code:addons/project_task_subtask/models/project_task_subtask.py:305
+#: code:addons/project_task_subtask/models/project_task_subtask.py:327
 #, python-format
 msgid "Updated from"
 msgstr ""
@@ -327,7 +347,7 @@ msgid "Waiting"
 msgstr ""
 
 #. module: project_task_subtask
-#: code:addons/project_task_subtask/models/project_task_subtask.py:209
+#: code:addons/project_task_subtask/models/project_task_subtask.py:227
 #, python-format
 msgid "Your Checklist:"
 msgstr ""
